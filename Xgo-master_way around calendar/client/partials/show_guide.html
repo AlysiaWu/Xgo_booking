@@ -1,0 +1,110 @@
+<style type="text/css">
+  /* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #000;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #000;
+   }
+</style>
+<title>Guide Profile</title>
+<nav class = "traveller-nav">
+      <div class="nav-wrapper">
+      <a href="#" class="brand-logo">&nbsp; &nbsp;&nbsp;xGo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <li><a href="#/">Log out</a></li>
+                  <li><a href="#/travellers">Travellers</a></li>
+                  <li><a href="#/tours">Look Around</a></li>
+                  <li><a href="#/guides">Tour Guides</a></li>
+            </ul>
+      </div>
+</nav>
+ <style type="text/css">
+      h5{
+      	text-align: left
+      }
+ </style>
+<div ng-controller = "GuideProfileController_backup" class = "row center-align card-panel pink lighten-5 z-depth-5">
+      <h5>Hi, {{guide.username}}! Tell us your plan to show people around {{guide.area}}</h5>
+      <section>
+  <div class = "row col s6">
+<form ng-submit="addTour()">
+	<div id = "tour">
+            <div class="input-field">
+                <input id="tour_name" ng-model="new_tour.tour_name" type="text" class="validate">
+                <label for="tour_name">Tour Name</label>
+            </div>
+            <div class="input-field">
+                 <input id="fee" ng-model="new_tour.fee" type="text" class="validate">
+                 <label for="fee">How much you want to charge?</label>
+            </div>
+      </div>
+            <div class="input-field">
+                  <textarea id="tour_description" ng-model="new_tour.tour_description" class="materialize-textarea"></textarea>
+                  <label for="tour_description">Describe how you would provide the tour</label>
+            </div>
+      <button class = "waves-effect  pink accent-1 btn" type = "submit">Submit</button>
+</form>
+</div>
+
+
+<!-- end of form -->
+<div class="row col s6">
+<!-- <h5>Your Tour Theme</h5> -->
+  <ul><strong>
+      <li>Tour Name: {{tour.tour_name}}</li>
+      <li>Tour Fee: {{tour.fee}}</li>
+      <li>Tour Description: {{tour.tour_description}}</li>
+  </strong></ul>
+</div><br>
+<br><br>
+
+</section>
+<!-- end of tour theme -->
+<div class="row col s3 offset s2">
+<h5>Please choose your availabilities</h5>
+<form  id = "timeslot" ng-submit = "addAvailabilities()">
+Date: <input type = "date" ng-model="new_aval.date">
+Start: <input type = "time" ng-model="new_aval.start">
+End: <input type = "time" ng-model="new_aval.end">
+<button class = "waves-effect  pink accent-1 btn" type = "submit">Add</button>
+</form>
+</div>
+<!-- end of choose time slot -->
+<div class="row col s4">
+<h5>Availabilities</h5>
+<div ng-repeat = "availability in availabilities">
+<div> Slot: {{availability.date | date:"yyyy-MMM-dd"}}, {{availability.start | date: "HH:mm a"}}  to {{availability.end | date: "HH:mm a"}}&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="">Select</a>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+  </div>
